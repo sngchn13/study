@@ -1,0 +1,15 @@
+# Godot 4 캐시 (임포트된 리소스, 에디터 상태, 내보내기 인증 정보 포함)
+.godot/
+
+# Godot 3에서 변환하며 남은 임포트 캐시
+.import/
+
+# 안드로이드 빌드 템플릿
+/android/
+
+# 내보내기 결과물
+/build/
+/export/
+
+# macOS
+.DS_Store
