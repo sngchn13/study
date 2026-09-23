@@ -1,10 +1,26 @@
 [gd_scene format=3 uid="uid://b0u8034wi7t3"]
 
 [ext_resource type="PackedScene" uid="uid://biu8oubdd52lw" path="res://map.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://dqwu37agpcht1" path="res://game_board.gd" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bohf4qu4hxsu1" path="res://unit.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c21glwfcxs4ec" path="res://cursor.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dqjltgdtlxb6t" path="res://unit_overlay.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cf0lu2dr06w7x" path="res://unit_path.tscn" id="4_7mycd"]
 
 [node name="Main" type="Node2D" unique_id=988953712]
 
 [node name="Map" parent="." unique_id=1964229711 instance=ExtResource("1_0xm2m")]
 
-[node name="Unit" parent="." unique_id=686486654 instance=ExtResource("2_h2yge")]
+[node name="GameBoard" type="Node2D" parent="." unique_id=160320990]
+script = ExtResource("2_1bvp3")
+
+[node name="UnitOverlay" parent="GameBoard" unique_id=759396808 instance=ExtResource("3_lquwl")]
+
+[node name="UnitPath" parent="GameBoard" unique_id=972170846 instance=ExtResource("4_7mycd")]
+
+[node name="Unit" parent="GameBoard" unique_id=686486654 instance=ExtResource("2_h2yge")]
+
+[node name="Cursor" parent="GameBoard" unique_id=1075796755 instance=ExtResource("3_h2yge")]
+
+[connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_cursor_accept_pressed"]
+[connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_on_cursor_moved"]
