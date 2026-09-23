@@ -53,15 +53,6 @@ func _ready() -> void:
 	
 	if not Engine.is_editor_hint():
 		self.curve = Curve2D.new()
-		
-	##test
-	var points: Array[Vector2i] = [
-		Vector2i(2,2),
-		Vector2i(2,5),
-		Vector2i(8,5),
-		Vector2i(8,7),
-	]
-	walk_along(points)
 	
 func _process(delta: float) -> void:
 	_path_follow.progress += move_speed * delta
@@ -78,7 +69,7 @@ func walk_along(path: Array[Vector2i]):
 		return
 	
 	curve.add_point(Vector2i.ZERO)
-	for point in path:
+	for point in path.slice(1):
 		curve.add_point(grid.calculate_map_position(point) - position)
 	
 	cell = path[-1]
